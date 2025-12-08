@@ -92,13 +92,21 @@ const Projects = ({ id, currentSection, scrollToSection }) => {
         
         {/* Header */}
         <div className="text-center mb-6">
+
+          {/* Icon + Title */}
+          <div className="flex justify-center items-center gap-3 mb-2">
+            <div className="p-2 bg-gradient-to-br from-gray-500/20 to-gray-500/20 rounded-xl border border-red-400/30">
+              <Github className="w-7 h-7 text-red-400" />
+          </div>
           <h2 className="text-5xl text-white font-bold mb-2 drop-shadow-lg">
             Projelerim
           </h2>
-          <p className="text-gray-300 text-sm">
-            {projects.length} proje • {featuredIndex + 1}. gösteriliyor
-          </p>
         </div>
+
+        <p className="text-gray-300 text-sm">
+          {projects.length} proje • {featuredIndex + 1}. gösteriliyor
+        </p>
+      </div>
 
         {/* Code Stream Animation */}
         <div className="flex items-center justify-center mb-6">

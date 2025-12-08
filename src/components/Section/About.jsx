@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, UserRound } from 'lucide-react';
 
 const About = ({ id, currentSection, scrollToSection }) => (
   <section id={id} className="absolute inset-0 flex flex-col items-center justify-center p-10 transition-opacity duration-1000"
@@ -8,7 +8,14 @@ const About = ({ id, currentSection, scrollToSection }) => (
       pointerEvents: currentSection === 1 ? 'auto' : 'none'
     }}
   >
-    <h2 className="text-5xl text-white font-bold mb-6">Hakkımda</h2>
+    <div className="flex items-center justify-center gap-4 mb-10">
+  <div className="p-3 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-2xl border border-blue-400/30 shadow-lg">
+    <UserRound className="w-7 h-7 text-blue-400" />
+  </div>
+  <h2 className="text-5xl text-white font-bold">
+    Hakkımda
+  </h2>
+</div>
     <p className="text-xl text-gray-300 max-w-3xl text-center leading-relaxed">
       Ben Yaşar Doğan, Full Stack Developer olarak modern web uygulamaları geliştiriyorum. React, Node.js ve MongoDB ile kullanıcı dostu ve performanslı projeler ortaya koymayı hedefliyorum.
       Takım çalışmasına önem veriyor, öğrenmeye ve yeni teknolojileri denemeye her zaman açığım.

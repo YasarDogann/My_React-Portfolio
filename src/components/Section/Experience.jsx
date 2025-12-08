@@ -94,9 +94,17 @@ const Experience = ({ id, currentSection, goToNextSection }) => {
         
         {/* Header - Kompakt */}
         <div className="text-center mb-6">
+          {/* Icon + Title */}
+          <div className="flex justify-center items-center gap-3 mb-2">
+            <div className="p-2 bg-gradient-to-br from-amber-500/20 to-yellow-500/20 rounded-xl border border-amber-400/30">
+              <Briefcase className="w-7 h-7 text-amber-400" />
+            </div>
+
           <h2 className="text-5xl text-white font-bold mb-2 drop-shadow-lg">
             Mesleki Deneyim
           </h2>
+        </div>
+
           <p className="text-gray-300 text-base">
             {sortedExperiences.length} deneyim • {activeIndex + 1}. seçili
           </p>

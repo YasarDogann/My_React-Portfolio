@@ -1,43 +1,30 @@
 export const projects = [
   {
-    title: "E-Ticaret Platformu",
-    description: "React ve Node.js kullanılarak geliştirilmiş modern bir e-ticaret uygulaması",
-    technologies: ["React", "Node.js", "MongoDB", "Tailwind"],
-    github: "https://github.com/yasardogan",
-    image: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800&h=600&fit=crop"
+    title: "Villa Emlak Yönetim Sistemi- Villa Real Estate Management",
+    description: "Bu proje, Villa Emlak Yönetimi uygulamasıdır. Kullanıcılar kayıt olabilir, giriş yapabilir ve admin paneli üzerinden CRUD işlemleri gerçekleştirebilir... ",
+    technologies: ["ASP.NET Core", "JavaScript", "HTML", "CSS", "MongoDB", "Entity Framework", "Bootstrap", "JWT Authentication"],
+    github: "https://github.com/YasarDogann/Villa",
+    image: "https://images.unsplash.com/photo-1717167398882-15d1cefd22f6?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1932"
   },
   {
-    title: "Task Manager",
-    description: "Takım çalışması için geliştirilmiş proje yönetim aracı",
-    technologies: ["React", "Firebase", "Material-UI"],
-    github: "https://github.com/yasardogan",
-        image: "https://images.unsplash.com/photo-1592210454359-9043f067919b?w=800&h=600&fit=crop"
+    title: "E-Ticaret API - E-Commerce Web API",
+    description: "Bu proje, modern yazılım mimarileri ve güçlü teknolojilerle geliştirilmiş bir E-Ticaret Web API uygulamasıdır.",
+    technologies: ["ASP.NET", "PostgreSQL", "Docker", "Onion Architecture", "Serilog - Seq", "SingalR", "CORS", "CQRS"," MediatR"],
+    github: "https://github.com/YasarDogann/ETicaretAPI",
+    image: "https://images.unsplash.com/photo-1722503583716-ee384fed4593?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2070"
   },
   {
-    title: "Weather App",
-    description: "Real-time hava durumu bilgisi sağlayan Progressive Web App",
-    technologies: ["React", "API Integration", "PWA"],
-    github: "https://github.com/yasardogan",
-    image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&h=600&fit=crop"
+    title: "E-Ticaret - E-Commerce Client",
+    description: "Bu proje, modern yazılım mimarileri ve güçlü teknolojilerle geliştirilmiş bir E-Ticaret Web API uygulamasıdır. Kendi API'imi oluşturarak, kullanıcıların ürünleri görüntüleyebileceği, sepetlerine ekleyebileceği ve sipariş verebileceği tam özellikli bir e-ticaret platformu sunuyorum.",
+    technologies: ["Angular", "TypeScript", "Bootstrap"],
+    github: "https://github.com/YasarDogann/ETicaretClient",
+    image: "https://images.unsplash.com/photo-1648134859196-3aa762e9440d?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2060"
   },
   {
-    title: "Blog Platformu",
+    title: "Araç Kiralama Sistemi - Car Rental",
     description: "Markdown destekli kişisel blog ve içerik yönetim sistemi",
     technologies: ["React", "Next.js", "PostgreSQL"],
-    github: "https://github.com/yasardogan",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop"
-  },
-  {
-    title: "Weather App",
-    description: "Real-time hava durumu bilgisi sağlayan Progressive Web App",
-    technologies: ["React", "API Integration", "PWA"],
-    github: "https://github.com/yasardogan"
-  },
-  {
-    title: "Blog Platformu",
-    description: "Markdown destekli kişisel blog ve içerik yönetim sistemi",
-    technologies: ["React", "Next.js", "PostgreSQL"],
-    github: "https://github.com/yasardogan",
-    image: "https://images.unsplash.com/photo-1611606063065-ee7946f0787a?w=800&h=600&fit=crop"
+    github: "https://github.com/YasarDogann/RentCar",
+    image: "https://images.unsplash.com/photo-1565043666747-69f6646db940?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1974"
   }
 ];

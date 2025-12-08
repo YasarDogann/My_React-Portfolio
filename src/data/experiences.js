@@ -1,89 +1,30 @@
-// export const experiences = [
-//   {
-//     title: "1. Deneyim",
-//     company: "Tech Solutions A.Ş.",
-//     period: "2023 - Günümüz",
-//     description: "Modern web uygulamaları geliştirme, takım liderliği ve mimari kararlar alma."
-//   },
-//   {
-//     title: "2. Deneyim",
-//     company: "Digital Agency",
-//     period: "2021 - 2023",
-//     description: "React tabanlı SPA uygulamaları geliştirme ve UI/UX optimizasyonu."
-//   },
-//   {
-//     title: "3. Deneyim",
-//     company: "Startup Inc.",
-//     period: "2020 - 2021",
-//     description: "Web geliştirme projelerinde aktif rol alma ve yeni teknolojiler öğrenme."
-//   },
-//   {
-//     title: "4. Deneyim",
-//     company: "Startup Inc.",
-//     period: "2020 - 2021",
-//     description: "Web geliştirme projelerinde aktif rol alma ve yeni teknolojiler öğrenme."
-//   },
-//   {
-//     title: "5. Deneyim",
-//     company: "Startup Inc.",
-//     period: "2020 - 2021",
-//     description: "Web geliştirme projelerinde aktif rol alma ve yeni teknolojiler öğrenme."
-//   },
-//   {
-//     title: "6. Deneyim",
-//     company: "Startup Inc.",
-//     period: "2020 - 2021",
-//     description: "Web geliştirme projelerinde aktif rol alma ve yeni teknolojiler öğrenme."
-//   },
-//   {
-//     title: "7. Deneyim",
-//     company: "Startup Inc.",
-//     period: "2020 - 2021",
-//     description: "Web geliştirme projelerinde aktif rol alma ve yeni teknolojiler öğrenme."
-//   }
-// ];
-// data/experiences.js
 export const experiences = [
   {
-    title: "Senior Full Stack Developer",
-    company: "Tech Solutions A.Ş.",
-    period: "2023 - Günümüz",
-    description: "Modern web uygulamaları geliştirme, takım liderliği ve mimari kararlar alma. React, Node.js, MongoDB teknolojileri ile scalable uygulamalar geliştirdim.",
-    technologies: ["React", "Node.js", "TypeScript", "MongoDB", "AWS"]
+    title: "Yasal Takip Destek",
+    company: "Yapı Kredi Bankası - Genel Müdürlük",
+    period: "2024 - 2024",
+    description: "Yapı Kredi Bankası Yasal Takip Birimi’nde Destek Elemanı olarak görev yaptım.",
+    technologies: []
   },
   {
     title: "Frontend Developer",
-    company: "Digital Agency", 
-    period: "2021 - 2023",
-    description: "React tabanlı SPA uygulamaları geliştirme ve UI/UX optimizasyonu. 20+ farklı projede frontend geliştirme süreçlerinde yer aldım.",
-    technologies: ["React", "JavaScript", "Redux", "CSS3", "Webpack"]
+    company: "Momento Medya",
+    period: "2023 - 2024", 
+    description: "Firmanın web sitelerinin düzenlenmesi ve site yapılması için çalıştım. Wordpress sistemlerini kullanarak siteler yaptım. Hali hazırda olan sitelerin güncelleme işlemlerini yaptım. Sunucu tarafında da gerekli güncelleme ve kurulum işlemleri üzerine çalışmalarda bulundum.",
+    technologies: ["HTML5", "CSS3", "JavaScript", "Wordpress", "Git"]
   },
   {
-    title: "Junior Developer",
-    company: "Startup Inc.",
-    period: "2020 - 2021", 
-    description: "Web geliştirme projelerinde aktif rol alma ve yeni teknolojiler öğrenme. Agile metodolojiler ile temel web development becerilerimi geliştirdim.",
-    technologies: ["HTML5", "CSS3", "JavaScript", "React", "Git"]
+    title: "Software Developer Intern",
+    company: "MBsan Bilgisayar",
+    period: "2022 - 2022",
+    description: "Bilgisayar donanımı ve yazılımı üzerine staj yaptım. Temel programlama ve sistem yönetimi becerileri kazandım.",
+    technologies: ["Firewall", "Donanım", "Yazılım"]
   },
   {
-    title: "Stajyer Developer",
-    company: "Web Agency",
+    title: "Led Panel Teknikeri",
+    company: "BTG Teknik ",
     period: "2019 - 2020",
-    description: "Frontend development temellerini öğrendim ve küçük projelerde yer aldım.",
-    technologies: ["HTML", "CSS", "JavaScript", "jQuery"]
-  },
-  {
-    title: "Junior Developer",
-    company: "Startup Inc.",
-    period: "2020 - 2021", 
-    description: "Web geliştirme projelerinde aktif rol alma ve yeni teknolojiler öğrenme. Agile metodolojiler ile temel web development becerilerimi geliştirdim.",
-    technologies: ["HTML5", "CSS3", "JavaScript", "React", "Git"]
-  },
-  {
-    title: "Stajyer Developer",
-    company: "Web Agency",
-    period: "2019 - 2020",
-    description: "Frontend development temellerini öğrendim ve küçük projelerde yer aldım.",
-    technologies: ["HTML", "CSS", "JavaScript", "jQuery"]
+    description: "Led panel montajı ve teknik servis işlemleri üzerine çalıştım. Temel elektronik bilgisi ve teknik servis deneyimi kazandım.",
+    technologies: ["Elektronik", "Donanım", "Yazılım"]
   }
 ];
