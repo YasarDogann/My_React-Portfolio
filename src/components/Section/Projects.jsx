@@ -42,7 +42,7 @@
 
 // export default Projects;
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { projects } from '../../data/projects';
 import { Github, ExternalLink, ChevronDown, ChevronLeft, ChevronRight, Star, Code2, Zap, Image as ImageIcon } from 'lucide-react';
 
@@ -79,10 +79,35 @@ const Projects = ({ id, currentSection, scrollToSection }) => {
 
   const featuredProject = projects[featuredIndex];
 
+  // Description expand/collapse for long texts
+  const [expanded, setExpanded] = useState(false);
+  const [clampLines, setClampLines] = useState(() => (typeof window !== 'undefined' && window.innerWidth >= 768) ? 8 : 5);
+
+  useEffect(() => {
+    // reset expansion when switching featured project
+    setExpanded(false);
+  }, [featuredIndex]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setClampLines(window.innerWidth >= 768 ? 8 : 5);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Thumbnail scrolling for mobile
+  const thumbRef = useRef(null);
+  const scrollThumb = (dir = 1) => {
+    if (!thumbRef.current) return;
+    const amount = dir * 120;
+    thumbRef.current.scrollBy({ left: amount, behavior: 'smooth' });
+  };
+
   return (
     <section
       id={id}
-      className="absolute inset-0 flex flex-col items-center justify-center px-6 py-8 transition-all duration-1000"
+      className="absolute inset-0 flex flex-col items-center justify-center px-4 md:px-6 py-6 md:py-8 transition-all duration-1000"
       style={{
         opacity: currentSection === 5 ? 1 : 0,
         pointerEvents: currentSection === 5 ? 'auto' : 'none'
@@ -131,21 +156,25 @@ const Projects = ({ id, currentSection, scrollToSection }) => {
         </div>
 
         {/* Featured Project - Büyük Showcase */}
-        <div className="flex-1 flex items-center justify-center mb-6 max-h-[420px]">
+        <div className="flex-1 flex items-center justify-center mb-6 max-h-[640px] md:max-h-[420px]">
           <div className="relative w-full max-w-6xl">
             
-            {/* Sol Navigation */}
+            {/* Sol Navigation - görünür mobilde de (küçük) */}
             <button
               onClick={prevProject}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-14 z-20 p-3 bg-gradient-to-r from-blue-500/20 to-purple-500/20 hover:from-blue-500/40 hover:to-purple-500/40 border border-blue-400/30 rounded-xl text-white transition-all duration-300 hover:scale-110 backdrop-blur-md group"
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-8 md:-translate-x-14 z-20 p-2 md:p-3 bg-white/5 md:bg-gradient-to-r from-blue-500/20 to-purple-500/20 hover:from-blue-500/40 hover:to-purple-500/40 border border-white/10 md:border-blue-400/30 rounded-xl text-white transition-all duration-300 hover:scale-110 backdrop-blur-md group"
             >
-              <ChevronLeft className="w-6 h-6 group-hover:animate-pulse" />
+              <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 group-hover:animate-pulse" />
             </button>
 
             {/* Ana Kart */}
             <div 
               key={featuredIndex}
-              className="relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border-2 border-blue-400/40 hover:border-blue-400 rounded-3xl p-8 shadow-2xl transition-all duration-700 hover:shadow-blue-400/30 hover:scale-[1.01] animate-project-enter overflow-hidden"
+              className="relative bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border-2 border-blue-400/40 hover:border-blue-400 rounded-3xl p-4 md:p-8 shadow-2xl transition-all duration-700 hover:shadow-blue-400/30 hover:scale-[1.01] animate-project-enter overflow-hidden max-h-[60vh] md:max-h-[420px]"
+              style={{
+                // ensure inner scroll on very long content (mobile)
+                overflowY: 'auto'
+              }}
             >
               {/* Glow Effect */}
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-pink-500/10 opacity-0 hover:opacity-100 transition-opacity duration-500 rounded-3xl pointer-events-none"></div>
@@ -164,7 +193,7 @@ const Projects = ({ id, currentSection, scrollToSection }) => {
               </div>
 
               {/* Content - İki Kolon Layout */}
-              <div className="relative z-10 mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="relative z-10 mt-6 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 
                 {/* Sol Taraf - İçerik */}
                 <div>
@@ -183,10 +212,30 @@ const Projects = ({ id, currentSection, scrollToSection }) => {
                     </div>
                   </div>
 
-                  {/* Description */}
-                  <p className="text-gray-200 text-base leading-relaxed mb-6">
-                    {featuredProject.description}
-                  </p>
+                  {/* Description (clamped with toggle) */}
+                  <div className="mb-4">
+                    <p
+                      className="text-gray-200 text-base leading-relaxed mb-3 break-words"
+                      style={
+                        expanded
+                          ? {}
+                          : {
+                              display: '-webkit-box',
+                              WebkitLineClamp: clampLines,
+                              WebkitBoxOrient: 'vertical',
+                              overflow: 'hidden'
+                            }
+                      }
+                    >
+                      {featuredProject.description}
+                    </p>
+                    <button
+                      onClick={() => setExpanded((s) => !s)}
+                      className="text-sm text-blue-300 hover:text-blue-400 transition-colors"
+                    >
+                      {expanded ? 'Gizle' : 'Daha fazla'}
+                    </button>
+                  </div>
 
                   {/* Technologies */}
                   <div className="mb-6">
@@ -226,7 +275,7 @@ const Projects = ({ id, currentSection, scrollToSection }) => {
 
                 {/* Sağ Taraf - Proje Görseli */}
                 <div className="flex items-center justify-center">
-                  <div className="relative w-full h-64 rounded-2xl overflow-hidden border-2 border-blue-400/30 shadow-2xl group">
+                  <div className="relative w-full h-48 md:h-64 rounded-2xl overflow-hidden border-2 border-blue-400/30 shadow-2xl group">
                     {/* Proje görseli varsa */}
                     {featuredProject.image ? (
                       <img 
@@ -260,26 +309,36 @@ const Projects = ({ id, currentSection, scrollToSection }) => {
               <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-purple-500/20 to-transparent rounded-tl-full pointer-events-none"></div>
             </div>
 
-            {/* Sağ Navigation */}
+            {/* Sağ Navigation - görünür mobilde de (küçük) */}
             <button
               onClick={nextProject}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-14 z-20 p-3 bg-gradient-to-r from-purple-500/20 to-pink-500/20 hover:from-purple-500/40 hover:to-pink-500/40 border border-purple-400/30 rounded-xl text-white transition-all duration-300 hover:scale-110 backdrop-blur-md group"
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-8 md:translate-x-14 z-20 p-2 md:p-3 bg-white/5 md:bg-gradient-to-r from-purple-500/20 to-pink-500/20 hover:from-purple-500/40 hover:to-pink-500/40 border border-white/10 md:border-purple-400/30 rounded-xl text-white transition-all duration-300 hover:scale-110 backdrop-blur-md group"
             >
-              <ChevronRight className="w-6 h-6 group-hover:animate-pulse" />
+              <ChevronRight className="w-5 h-5 md:w-6 md:h-6 group-hover:animate-pulse" />
             </button>
           </div>
         </div>
 
         {/* Thumbnail Gallery - Altta - DÜZELTİLMİŞ */}
-        <div className="flex justify-center items-center mb-4 px-16">
-          <div className="flex gap-3 overflow-x-auto max-w-4xl pb-2 px-2 scrollbar-hide">
+        <div className="flex justify-center items-center mb-4 px-4 md:px-16">
+            <div className="relative flex items-center gap-2 w-full">
+              {/* Mobile thumbnail scroll buttons */}
+              <button
+                onClick={() => scrollThumb(-1)}
+                className="md:hidden p-2 bg-white/5 rounded-full ml-1"
+                aria-label="scroll thumbnails left"
+              >
+                <ChevronLeft className="w-4 h-4 text-white/80" />
+              </button>
+
+              <div ref={thumbRef} className="flex gap-3 overflow-x-auto flex-1 max-w-full pb-2 px-2 scrollbar-hide">
             {projects.map((project, index) => (
               <button
                 key={index}
                 onClick={() => setFeaturedIndex(index)}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
-                className={`relative flex-shrink-0 w-28 h-20 rounded-xl transition-all duration-300 overflow-hidden ${
+                className={`relative flex-shrink-0 w-20 sm:w-28 h-16 sm:h-20 rounded-xl transition-all duration-300 overflow-hidden ${
                   index === featuredIndex
                     ? 'border-2 border-blue-400 scale-105 shadow-lg shadow-blue-400/50'
                     : 'border-2 border-white/20 hover:border-white/40 hover:scale-105'
@@ -323,7 +382,16 @@ const Projects = ({ id, currentSection, scrollToSection }) => {
                 )}
               </button>
             ))}
-          </div>
+              </div>
+
+              <button
+                onClick={() => scrollThumb(1)}
+                className="md:hidden p-2 bg-white/5 rounded-full mr-1"
+                aria-label="scroll thumbnails right"
+              >
+                <ChevronRight className="w-4 h-4 text-white/80" />
+              </button>
+            </div>
         </div>
 
         {/* Progress & Navigation Dots */}

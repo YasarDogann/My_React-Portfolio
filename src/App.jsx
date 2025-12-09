@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { ChevronDown, Home, User, Code, BookOpen, Briefcase, Github, MessageSquare, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
 
 import HomeSection from './components/Section/Home';
@@ -23,7 +23,7 @@ function App() {
   const [currentSection, setCurrentSection] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
 
-  const scrollToSection = (index) => {
+  const scrollToSection = useCallback((index) => {
     if (isScrolling) return;
     setIsScrolling(true);
     setCurrentSection(index);
@@ -32,7 +32,7 @@ function App() {
     section?.scrollIntoView({ behavior: 'smooth' });
 
     setTimeout(() => setIsScrolling(false), 1000);
-  };
+  }, [isScrolling]);
 
   // Mouse wheel event
   useEffect(() => {
@@ -49,7 +49,7 @@ function App() {
 
     window.addEventListener('wheel', handleWheel, { passive: false });
     return () => window.removeEventListener('wheel', handleWheel);
-  }, [currentSection, isScrolling]);
+  }, [currentSection, isScrolling, scrollToSection]);
 
   return (
     <div className="relative w-full h-screen overflow-hidden">
@@ -62,8 +62,8 @@ function App() {
         <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-black/70"></div>
       </div>
 
-      {/* Sol Menü */}
-      <div className="fixed left-8 top-1/2 transform -translate-y-1/2 z-50 flex flex-col gap-6">
+  {/* Sol Menü - sakla: mobilde gizle, masaüstünde göster */}
+  <div className="hidden md:flex fixed left-8 top-1/2 transform -translate-y-1/2 z-50 flex-col gap-6">
         {sections.map((section, i) => {
           const Icon = section.icon;
           return (
@@ -81,8 +81,8 @@ function App() {
         })}
       </div>
 
-      {/* Sağ Nokta Göstergeleri */}
-      <div className="fixed right-8 top-1/2 transform -translate-y-1/2 z-50 flex flex-col gap-4">
+  {/* Sağ Nokta Göstergeleri - mobilde gizle */}
+  <div className="hidden md:flex fixed right-8 top-1/2 transform -translate-y-1/2 z-50 flex flex-col gap-4">
         {sections.map((_, i) => (
           <button key={i} onClick={() => scrollToSection(i)} className="group relative">
             <div className={`w-3 h-3 rounded-full transition-all duration-500 ${
@@ -101,6 +101,18 @@ function App() {
         <Experience id="section-4" currentSection={currentSection} scrollToSection={scrollToSection} />
         <Projects id="section-5" currentSection={currentSection} scrollToSection={scrollToSection} />
         <Contact id="section-6" currentSection={currentSection} scrollToSection={scrollToSection} />
+      </div>
+
+      {/* Mobil alt navigasyon: küçük ekranlarda göster, masaüstünde gizle */}
+      <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 flex md:hidden gap-3 bg-white/5 backdrop-blur rounded-full px-3 py-2 shadow-lg">
+        {sections.map((section, i) => {
+          const Icon = section.icon;
+          return (
+            <button key={i} onClick={() => scrollToSection(i)} className={`p-2 rounded-full transition-colors ${currentSection === i ? 'bg-white/30' : 'hover:bg-white/10'}`}>
+              <Icon className={`w-5 h-5 ${currentSection === i ? 'text-white' : 'text-gray-300'}`} />
+            </button>
+          )
+        })}
       </div>
 
       <style jsx>{`
