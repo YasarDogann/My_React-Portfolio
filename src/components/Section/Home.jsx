@@ -27,6 +27,7 @@
 
 import React from 'react';
 import { ChevronDown, User } from 'lucide-react';
+import profilePic from '../../assets/pp.jpg';
 
 const Home = ({ id, currentSection, scrollToSection }) => (
   <section 
@@ -53,7 +54,7 @@ const Home = ({ id, currentSection, scrollToSection }) => (
             
             {/* SEÇENEK 1: Kendi fotoğrafınız varsa (public klasöründen) */}
             <img 
-              src="../pp.jpg" 
+              src={profilePic} 
               alt="Yaşar Doğan"
               className="w-full h-full object-cover"
             />
