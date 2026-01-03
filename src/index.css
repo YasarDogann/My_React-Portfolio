@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+/* Ensure body allows natural vertical scroll (mobile-first baseline) */
+html, body, #root {
+  height: auto;
+  overflow-y: auto;
+}
+
 @keyframes code-flow {
   0% { 
     transform: translateX(-100%); 

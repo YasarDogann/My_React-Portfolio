@@ -19,7 +19,7 @@ const About = ({ id, currentSection, scrollToSection }) => (
     <p className="text-base md:text-xl text-gray-300 max-w-3xl text-center leading-relaxed">
       Ben Yaşar Doğan, Lisede Endüstriyel Otomasyon ve Mekatronik eğitimiyle başladığım teknoloji yolculuğumu, üniversitede Bilgisayar Programcılığı bölümünden mezun olarak yazılıma taşıdım. C#, Java ve Python gibi dillerde sürekli kendimi geliştirmeye devam ediyorum.
 
-      Takım çalışmasına yatkınım. Lisede okulun robotik takımında yer alarak problem çözme becerilerimi, analitik düşünme yeteneğimi ve ekip çalışması konusundaki yetkinliklerimi geliştirdim. Hedefim, hem bireysel hem de ekip projelerinde yaratıcı çözümler üreterek teknoloji dünyasında fark yaratmak.
+      Takım çalışmasına yatkınım. Lisede okulun robotik takımında yer alarak problem çözme becerilerimi, analitik düşünme yeteneğimi ve ekip çalışması konusundaki yetkinliklerimi geliştirdim. Hedefim, hem bireysel hem de ekip projelerinde yaratıcı çözümler üretmek.
     </p>
     {currentSection === 1 && (
       <button onClick={() => scrollToSection(2)} className="absolute bottom-20 md:bottom-12 group cursor-pointer animate-fade-in">
